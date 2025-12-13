@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- generated with assistance of AI -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payroll Integration Agentic Self Healing Demo</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      max-width: 600px;
+      width: 100%;
+      padding: 40px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .logo {
+      font-size: 48px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 28px;
+      margin-bottom: 8px;
+    }
+
+    .tagline {
+      color: #666;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .purpose-section {
+      background: #fff3cd;
+      border: 2px solid #ffc107;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+
+    .purpose-section h2 {
+      color: #856404;
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+
+    .purpose-section p {
+      color: #856404;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .warning-box {
+      background: #fff;
+      border-left: 4px solid #ffc107;
+      padding: 12px;
+      border-radius: 4px;
+      margin-top: 12px;
+    }
+
+    .warning-box strong {
+      color: #856404;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .warning-box ul {
+      list-style: none;
+      font-size: 13px;
+      color: #666;
+    }
+
+    .warning-box li {
+      padding: 4px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .warning-box li:before {
+      content: "•";
+      position: absolute;
+      left: 8px;
+      color: #ffc107;
+      font-weight: bold;
+    }
+
+    .benefits {
+      background: #f0f4ff;
+      border-left: 4px solid #667eea;
+      padding: 16px;
+      border-radius: 6px;
+      margin-bottom: 30px;
+    }
+
+    .benefits h3 {
+      color: #667eea;
+      font-size: 14px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .benefits ul {
+      list-style: none;
+      font-size: 14px;
+      color: #555;
+    }
+
+    .benefits li {
+      padding: 4px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .benefits li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #667eea;
+      font-weight: bold;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #333;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .required {
+      color: #e74c3c;
+    }
+
+    input[type="file"],
+    input[type="email"],
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid #e0e0e0;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: border-color 0.3s;
+      font-family: inherit;
+    }
+
+    input[type="file"]::file-selector-button {
+      background: #667eea;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 600;
+      margin-right: 10px;
+    }
+
+    input[type="file"]::file-selector-button:hover {
+      background: #764ba2;
+    }
+
+    input[type="email"]:focus,
+    select:focus,
+    input[type="file"]:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .help-text {
+      font-size: 12px;
+      color: #999;
+      margin-top: 6px;
+    }
+
+    .button-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    button {
+      flex: 1;
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .submit-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .reset-btn {
+      background: #f0f0f0;
+      color: #333;
+    }
+
+    .reset-btn:hover {
+      background: #e0e0e0;
+    }
+
+    .loading {
+      display: none;
+      text-align: center;
+      color: #667eea;
+    }
+
+    .spinner {
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #667eea;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 12px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .error-message {
+      display: none;
+      background: #ffe0e0;
+      border: 2px solid #e74c3c;
+      color: #c0392b;
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+
+    .success-message {
+      display: none;
+      background: #e0ffe0;
+      border: 2px solid #27ae60;
+      color: #229954;
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 24px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      .button-group {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">🛡️</div>
+      <h1>Payroll Integration Guardrail</h1>
+      <p class="tagline">Self-healing data validator with automatic correction</p>
+    </div>
+
+    <div class="purpose-section">
+      <h2>Purpose of This Form</h2>
+      <p>This is a <strong>demonstration</strong> of an autonomous integration workflow. Use of this tool to see how self-healing integrations automatically detect, diagnose, and resolve data issues.</p>
+          <div class="benefits">
+      <h3>What This Tool Does</h3>
+      <ul>
+        <li>Automatically detects schema issues</li>
+        <li>Fixes common problems instantly</li>
+        <li>Learns from each incident</li>
+        <li>Escalates complex issues to our team</li>
+      </ul>
+    </div>
+      
+      <div class="warning-box">
+        <strong>⚠️ Important Notes:</strong>
+        <ul>
+          <li>This is a <strong>demo environment only</strong></li>
+          <li>Data is stored in a public Google Sheet for demonstration purposes</li>
+          <li>This solution does <strong>NOT sync</strong> to production payroll systems</li>
+          <li>No authentication required for this demo</li>
+          <li>Use test/sample data only</li>
+        </ul>
+      </div>
+    </div>
+
+
+
+    <div id="errorMessage" class="error-message"></div>
+    <div id="successMessage" class="success-message"></div>
+
+    <form id="payrollForm">
+      <div class="form-group">
+        <label for="csvFile">
+          📊 Upload Payroll CSV File <span class="required">*</span>
+        </label>
+        <input 
+          type="file" 
+          id="csvFile" 
+          name="csv_file" 
+          accept=".csv" 
+          required
+        >
+        <div class="help-text">CSV files up to 10MB. Must contain employee and payment data.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="source">
+          🏢 Data Source <span class="required">*</span>
+        </label>
+        <select id="source" name="source" required>
+          <option value="">-- Select a source --</option>
+          <option value="Partner_ADP">ADP Workforce</option>
+          <option value="Partner_Workday">Workday</option>
+          <option value="Partner_Gusto">Gusto</option>
+          <option value="Partner_BambooHR">BambooHR</option>
+        </select>
+        <div class="help-text">Select which payroll system this data comes from.</div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">
+          📧 Notification Email
+        </label>
+        <input 
+          type="email" 
+          id="email" 
+          name="notification_email" 
+          placeholder="your@company.com"
+        >
+        <div class="help-text">Optional. We'll send results and alerts here.</div>
+      </div>
+
+      <div class="button-group">
+        <button type="reset" class="reset-btn">Clear</button>
+        <button type="submit" class="submit-btn">Validate & Import</button>
+      </div>
+
+      <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <p>Processing your file...</p>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    const webhookUrl = 'https://www.make.com/webhook/YOUR_WEBHOOK_ID';
+    const form = document.getElementById('payrollForm');
+    const loading = document.getElementById('loading');
+    const errorMessage = document.getElementById('errorMessage');
+    const successMessage = document.getElementById('successMessage');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Validate
+      const fileInput = document.getElementById('csvFile');
+      const sourceInput = document.getElementById('source');
+      
+      if (!fileInput.files[0]) {
+        showError('Please select a CSV file');
+        return;
+      }
+
+      if (!sourceInput.value) {
+        showError('Please select a data source');
+        return;
+      }
+
+      // Read file
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+
+      reader.onload = async (e) => {
+        try {
+          loading.style.display = 'block';
+          errorMessage.style.display = 'none';
+          successMessage.style.display = 'none';
+
+          const base64 = e.target.result.split(',')[1];
+
+          const payload = {
+            csv_file: base64,
+            file_name: file.name,
+            source: sourceInput.value,
+            notification_email: document.getElementById('email').value || 'none@example.com'
+          };
+
+          const response = await fetch(webhookUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+          });
+
+          loading.style.display = 'none';
+
+          if (response.ok) {
+            const data = await response.json();
+            showSuccess(`Success! Incident ID: ${data.incident_id}`);
+            form.reset();
+          } else {
+            showError(`Error: ${response.status} ${response.statusText}`);
+          }
+        } catch (error) {
+          loading.style.display = 'none';
+          showError(`Error: ${error.message}`);
+        }
+      };
+
+      reader.readAsDataURL(file);
+    });
+
+    function showError(msg) {
+      errorMessage.textContent = msg;
+      errorMessage.style.display = 'block';
+    }
+
+    function showSuccess(msg) {
+      successMessage.textContent = msg;
+      successMessage.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
