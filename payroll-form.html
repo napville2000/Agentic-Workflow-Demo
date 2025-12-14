@@ -429,10 +429,11 @@
           errorMessage.style.display = 'none';
           successMessage.style.display = 'none';
 
-          const base64 = e.target.result.split(',')[1];
+          const csvText = e.target.result.split(',')[1];
+          const decodedCSV = atob(csvText); // Decode base64 to text
 
           const payload = {
-            csv_file: base64,
+            csv_file: decodedCSV,
             file_name: file.name,
             source: sourceInput.value,
             notification_email: document.getElementById('email').value || 'none@example.com'
