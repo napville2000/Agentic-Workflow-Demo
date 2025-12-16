@@ -57,7 +57,11 @@ Results appear instantly with incident ID and validation details.
                      ↓
             Vendor-Ready JSON
 ```
+## 🔧 Make.com Workflow
 
+![Make.com Workflow Architecture](https://drive.google.com/uc?export=view&id=1FILcvq6XtNlX10wkPhlUPYgejKk48fIF)
+
+*Complete end-to-end payroll validation workflow in Make.com*
 ---
 
 ## 📊 Test Data
