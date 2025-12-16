@@ -402,6 +402,8 @@ To deploy to production:
 6. **Validation:** Add email/amount validation rules
 7. **Encryption:** Secure data in transit and at rest
 8. **Rate Limiting:** Implement throttling for large batches
+9. API Endpoints connections to Vendor Specs
+10. Logic/Workflow to insert formatted payload to client's Payroll System 
 
 ---
 
@@ -438,6 +440,6 @@ Built with:
 ## Quick Links
 
 - 🌐 **[Live Form](https://napville2000.github.io/Agentic-Workflow-Demo/payroll-form.html)**
-- 📁 **[Sample Files](https://github.com/napville2000/Agentic-Workflow-Demo/tree/main/Sample-Import-Files)**
-- 🛠️ **[Make.com Workflow](https://make.com)** (configure your own)
-- 📊 **[Vendor Specs Sheet](https://docs.google.com/spreadsheets)** (shared reference)
+- 📁 **[Sample Files]([https://github.com/napville2000/Agentic-Workflow-Demo/tree/main/Sample-Import-Files](https://drive.google.com/drive/folders/1tOSJ1RHZvlDR_KAQLm9-ZxdCPicWmiPO?usp=drive_link))**
+- 🛠️ **[Make.com Workflow]([https://make.com](https://us2.make.com/public/shared-scenario/zX1szMLhWKj/payroll-guardrail-complete-final))** (configure your own)
+- 📊 **[Vendor Specs Sheet]([https://docs.google.com/spreadsheets](https://docs.google.com/spreadsheets/d/1cjaOGFcqMBvSyfz1mT6r9U9uoT50HBVpnDBwEnVBA8E/edit?gid=1495552387#gid=1495552387))** (shared reference)
