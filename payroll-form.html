@@ -429,7 +429,10 @@
           errorMessage.style.display = 'none';
           successMessage.style.display = 'none';
 
-          const csvText = e.target.result.split(',')[1];
+          // FIXED: Better base64 extraction
+          const dataUrl = e.target.result;
+          const base64Index = dataUrl.indexOf(',');
+          const csvText = dataUrl.substring(base64Index + 1);
           const decodedCSV = atob(csvText); // Decode base64 to text
 
           const payload = {
@@ -449,15 +452,26 @@
 
           loading.style.display = 'none';
 
+          // FIXED: Better error handling - read response body
           if (response.ok) {
             const data = await response.json();
-            showSuccess(`Success! Incident ID: ${data.incident_id}`);
+            console.log('Success response:', data); // Debug log
+            showSuccess(`Success! Incident ID: ${data.incident_id || data.incidentId || 'N/A'}`);
             form.reset();
           } else {
-            showError(`Error: ${response.status} ${response.statusText}`);
+            // Try to get error details from response
+            let errorDetails = `${response.status} ${response.statusText}`;
+            try {
+              const errorData = await response.json();
+              errorDetails = errorData.message || errorData.error || errorDetails;
+            } catch (e) {
+              // Response wasn't JSON, use status text
+            }
+            showError(`Error: ${errorDetails}`);
           }
         } catch (error) {
           loading.style.display = 'none';
+          console.error('Fetch error:', error); // Debug log
           showError(`Error: ${error.message}`);
         }
       };
